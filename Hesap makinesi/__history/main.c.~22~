@@ -1,0 +1,110 @@
+#include <main.h>
+
+#use fast_io(b)
+#use fast_io(d)
+#define use_portb_lcd TRUE
+
+#include <lcd.c>
+
+int sayi1=0;
+int sayi=0;
+int x=0;
+char islem=0;
+int sonuc=0;
+
+int sonuc_bul()
+{ printf(lcd_putc,"\fislem=%d %d %d",islem,sayi1,sayi);
+delay_ms(1000);
+printf(lcd_putc,"\fsonucunuz");
+ switch (islem)
+ {
+  case 1:
+    sonuc=sayi1+sayi; printf(lcd_putc,"\n%daaaa",sonuc);break;
+  case 2:
+    sonuc=sayi1-sayi; printf(lcd_putc,"\n%dbbb",sonuc); break;
+  case 3:
+    sonuc=sayi1*sayi; printf(lcd_putc,"\n%d cccc",sonuc); break;  
+  case 4:
+    sonuc=sayi1/sayi;printf(lcd_putc,"\n%d ",sonuc); break;
+} 
+ islem=0;
+}
+
+char tus()
+{
+     output_high(pin_d0);
+     if(input(pin_d4)){ delay_ms(20); printf(lcd_putc,"\f 7"); x=7; sayi=sayi*10 +x;  }  // 7
+     if(input(pin_d5)){ delay_ms(20); printf(lcd_putc,"\f8");  x=8; sayi=sayi*10 +x; }   // 8
+     if(input(pin_d6)){ delay_ms(20); printf(lcd_putc,"\f9");  x=9; sayi=sayi*10 +x;}   // 9
+     if(input(pin_d7)){ delay_ms(20); printf(lcd_putc,"\fB");  
+      sayi1=sayi;
+      islem=4;
+      sayi=0;
+      
+     }   // bölme
+      output_low(pin_d0);
+      
+      output_high(pin_d1);
+     if(input(pin_d4)){ delay_ms(20); printf(lcd_putc,"\f 4"); x=4; sayi=sayi*10 +x;}  // 4
+     if(input(pin_d5)){ delay_ms(20); printf(lcd_putc,"\f5");  x=5; sayi=sayi*10 +x;}   // 5
+     if(input(pin_d6)){ delay_ms(20); printf(lcd_putc,"\f6");  x=6; sayi=sayi*10 +x;}   //6
+     if(input(pin_d7)){ delay_ms(20); printf(lcd_putc,"\f*");
+     sayi1=sayi;
+     islem=3;
+     sayi=2;}  // çarpma
+      output_low(pin_d1);
+      
+      output_high(pin_d2);
+     if(input(pin_d4)){ delay_ms(20); printf(lcd_putc,"\f 1"); x=1; sayi=sayi*10 +x;} // 1
+     if(input(pin_d5)){ delay_ms(20); printf(lcd_putc,"\f2");  x=2; sayi=sayi*10 +x;}  //2
+     if(input(pin_d6)){ delay_ms(20); printf(lcd_putc,"\f3");  x=3; sayi=sayi*10 +x;} //3
+     if(input(pin_d7)){ delay_ms(20); printf(lcd_putc,"\f-"); 
+     sayi1=sayi;
+     islem=2;
+     sayi=0;} //- çýkarma
+      output_low(pin_d2);
+      
+       output_high(pin_d3);
+     if(input(pin_d4)){ delay_ms(20); printf(lcd_putc,"\f ON");} //pasif
+     if(input(pin_d5)){ delay_ms(20); printf(lcd_putc,"\f0"); x=0; sayi=sayi*10 +x;}
+     if(input(pin_d6)){ delay_ms(20); 
+     
+      sonuc_bul();}
+     if(input(pin_d7)){ delay_ms(20); printf(lcd_putc,"\f+");
+     sayi1=sayi;
+      islem=1;}
+      output_low(pin_d3);
+      
+      return 0;
+
+}
+
+
+ 
+void main()
+{
+
+setup_psp(PSP_DISABLED); // PSP birimi devre dýþý
+setup_spi(SPI_SS_DISABLED); // SPI birimi devre dýþý
+setup_timer_1(T1_DISABLED); // T1 zamanlayýcýsý devre dýþý
+setup_timer_2(T2_DISABLED,0,1); // T2 zamanlayýcýsý devre dýþý
+setup_adc_ports(NO_ANALOGS); // ANALOG giriþ yok
+setup_adc(ADC_OFF); // ADC birimi devre dýþý
+setup_CCP1(CCP_OFF); // CCP1 birimi devre dýþý
+setup_CCP2(CCP_OFF); // CCP2 birimi devre dýþý
+
+set_tris_b(0x00);
+set_tris_d(0xF0);  // ilk dört port çýkýþ kalan portlar giriþ
+
+lcd_init();
+
+   while(TRUE)
+   {
+     tus();
+    
+ 
+     
+     
+   }
+
+}

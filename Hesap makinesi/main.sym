@@ -1,0 +1,135 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+006     lcdlat
+006     lcd
+008     PSP_DATA
+015     CCP_1
+015     CCP_1_LOW
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+020-021 sayi1
+022-023 sayi
+024     x
+025     islem
+026-029 sonuc
+02A     @TRIS_C
+02B-02E @PRINTF_L32D_789.P1
+02B-02C @MUL1616.P2
+02B     lcd_init.i
+02B-02E atan2.y
+02B-02C @DIV1616.P1
+02B     sonuc_bul.@SCRATCH1
+02B     @PSTRINGC7_789.@SCRATCH1
+02B     tus.@SCRATCH1
+02C-02F lcd_init.LCD_INIT_STRING
+02C     @PSTRINGC7_789.@SCRATCH2
+02C     tus.@SCRATCH2
+02D-02E @DIV1616.P1
+02D-02E @MUL1616.P2
+02D     @PSTRINGC7_789.@SCRATCH3
+02E     @PSTRINGC7_789.@SCRATCH4
+02F-032 atan2.x
+02F     @PRINTF_L32D_789.@SCRATCH1
+02F     @MUL1616.@SCRATCH1
+02F     @DIV1616.@SCRATCH1
+030     lcd_init.@SCRATCH1
+030     @PRINTF_L32D_789.@SCRATCH2
+031     @PRINTF_L32D_789.@SCRATCH3
+032     @PRINTF_L32D_789.@SCRATCH4
+033-036 atan2.z
+033     @PRINTF_L32D_789.@SCRATCH5
+034     @PRINTF_L32D_789.@SCRATCH6
+035     @PRINTF_L32D_789.@SCRATCH7
+036     @PRINTF_L32D_789.@SCRATCH8
+037-03A @DIV3232.P1
+037.0   atan2.sign
+037     lcd_putc.c
+038     @delay_ms1.P1
+038     atan2.quad
+038     lcd_gotoxy.x
+039     lcd_gotoxy.y
+03A     lcd_gotoxy.address
+03B-03E @DIV3232.P1
+03B     lcd_gotoxy.@SCRATCH1
+03C     lcd_send_byte.address
+03D     lcd_send_byte.n
+03E     lcd_read_byte.low
+03E     lcd_send_byte.@SCRATCH1
+03F     lcd_read_byte.high
+03F     lcd_send_nibble.n
+03F     @DIV3232.@SCRATCH1
+040     lcd_read_byte.@SCRATCH1
+040     @DIV3232.@SCRATCH2
+041     @DIV3232.@SCRATCH3
+042     @DIV3232.@SCRATCH4
+043     @DIV3232.@SCRATCH5
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+086     lcdtris
+09C.6   C1OUT
+09C.7   C2OUT
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  @const807.call
+00000A  @const838.call
+00000D  @delay_ms1
+000022  lcd_send_nibble
+00002E  lcd_read_nibble
+000034  lcd_send_byte
+00003A  lcd_read_byte
+000074  lcd_init
+0000B2  lcd_gotoxy
+0000C4  lcd_putc
+0000F0  @MUL1616
+000105  @PSTRINGC7_789
+00015B  @DIV3232
+0001AA  @PRINTF_L32D_789
+000228  sonuc_bul
+0002AC  @DIV1616
+0002EF  @goto11192
+0002F7  tus
+00044C  @cinit1
+00044C  MAIN
+000462  @cinit2
+
+Project Directory:
+    C:\Users\HALÝL GÖK\Desktop\ELECTRONÝC WORKS\PIC çalýþmalarým\Hesap makinesi\
+
+Project Files:
+    main.c                                                  [01-Tem-19 20:11  CRC=8BE1A164]
+    main.h                                                  [01-Tem-19 16:51  CRC=CF12E969]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Devices\16F877A.h [12-Kas-13 14:35  CRC=81334808]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\math.h [28-Eyl-12 11:35  CRC=546412C9]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Drivers\lcd.c [19-Eyl-13 15:38  CRC=D1A6378A]
+
+Source signature=D3D854B2
+
+Units:
+    main (main)
+
+Compiler Settings:
+    Processor:      PIC16F877A
+    Pointer Size:   16
+    ADC Range:      0-65535
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   main.xsym
+    Errors:      main.err
+    Ext Symbols: main.esym
+    INHX8:       main.hex
+    Symbols:     main.sym
+    List:        main.lst
+    Debug/COFF:  main.cof
+    Project:     main.ccspjt
+    Call Tree:   main.tre
+    Statistics:  main.STA
